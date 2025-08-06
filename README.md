@@ -147,7 +147,7 @@ If you're hosting this project on your own server, lock it down properly:
 - Disable password SSH login, use key-based authentication only.
 - Ensure the backend is never exposed directly — always use Nginx as a reverse proxy.
 - Never expose internal repo paths or sensitive data via logs or API responses.
-- In this site, I allow unauthenticated access to /api/analyze for demonstration purposes only. The response contains harmless code stats (like line counts and languages) and basic server paths — but no file contents or private information.
+- Again, in this site I allow unauthenticated access to /api/analyze for demonstration purposes only. The response contains harmless code stats (like line counts and languages) and basic server paths — but no file contents or private information.
 - Regularly update Node, Nginx, and dependencies to patch vulnerabilities.
 - Run the backend as a non-root user and consider using a process manager like PM2.
 
