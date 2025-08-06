@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Greg Simon's Developer Portfolio
 
 A simple dev site to showcase your projects with easy server-side API calls to analyze your project files. This modern, responsive portfolio website includes a backend component that connects to locally hosted repositories through API calls, allowing for real-time code analysis and statistics.
@@ -154,3 +155,7 @@ If you're hosting this project on your own server, lock it down properly:
 ## 📱 Mobile Support
 
 The application is fully responsive and tested on various mobile devices. CSS breakpoints are used to ensure a smooth experience on all screen sizes.
+=======
+# dev-site
+A simple dev site to showcase projects with server-side API calls to analyze locally hosted repositories through nginx proxy
+>>>>>>> 78eae5ee05e40704a955fc39e0725d82e2d46b06
