@@ -17,11 +17,9 @@ export async function analyzeRepo(project = 'LockChain') {
     if (project === 'AiQArt') {
       // Use a more specific path or search for AiQArt files only
       repoPath = process.env.AIQART_REPO_PATH;
-      console.log(`Using AiQArt path: ${repoPath}`);
     } else if (project === 'SolMate') {
       // Use SolMate repo path
       repoPath = process.env.SOLMATE_REPO_PATH;
-      console.log(`Using SolMate path: ${repoPath}`);
     } else {
       // Default to LockChain repo
       repoPath = isProduction
@@ -40,7 +38,6 @@ export async function analyzeRepo(project = 'LockChain') {
     if (project === 'AiQArt') {
       // Use a super simple command for AiQArt - include both .kt and .xml files in the directory
       command = `cd "${repoPath}" && tokei *.kt *.xml --output json --sort=lines`;
-      console.log('Using direct command for AiQArt analysis with Kotlin and XML files:', repoPath);
     } else {
       command = `tokei "${repoPath}" ${excludeDirs} --output json --sort=lines`;
     }

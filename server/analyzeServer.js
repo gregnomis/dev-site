@@ -22,7 +22,6 @@ app.use(cors());
 // Serve the static files if in production
 if (isProduction) {
   const distDir = path.join(__dirname, '../dist');
-  console.log(`Serving static files from: ${distDir}`);
   app.use(express.static(distDir));
 }
 
@@ -34,10 +33,8 @@ app.get('/api/analyze', (req, res) => {
   let repoPath;
   if (project === 'AiQArt') {
     repoPath = process.env.AIQART_REPO_PATH;
-    console.log(`Using AiQArt path: ${repoPath}`);
   } else if (project === 'SolMate') {
     repoPath = process.env.SOLMATE_REPO_PATH;
-    console.log(`Using SolMate path: ${repoPath}`);
   } else {
     repoPath = isProduction
       ? process.env.PROD_REPO_PATH
@@ -62,7 +59,6 @@ app.get('/api/analyze', (req, res) => {
     if (project === 'AiQArt') {
       // Use a super simple command for AiQArt - include both .kt and .xml files in the directory
       command = `cd "${repoPath}" && tokei *.kt *.xml --output json --sort=lines`;
-      console.log('Using direct command for AiQArt analysis with Kotlin and XML files:', repoPath);
     } else {
       command = `tokei "${repoPath}" ${excludeDirs} --output json --sort=lines`;
     }
@@ -71,8 +67,6 @@ app.get('/api/analyze', (req, res) => {
     
     exec(command, { maxBuffer: 20 * 1024 * 1024 }, (execErr, stdout, stderr) => {
       if (execErr) {
-        console.error('❌ Tokei error:', stderr || execErr);
-        console.error(`Failed command was: ${command}`);
         
         return res.status(500).json({ 
           error: 'Tokei analysis failed', 
@@ -85,7 +79,6 @@ app.get('/api/analyze', (req, res) => {
         const stats = JSON.parse(stdout);
         res.json(stats);
       } catch (parseErr) {
-        console.error('❌ JSON parse error:', parseErr);
         res.status(500).json({ error: 'Failed to parse tokei output' });
       }
     });
@@ -100,9 +93,4 @@ if (isProduction) {
 }
 
 app.listen(PORT, () => {
-  console.log(`📊 Repo analyzer server running in ${isProduction ? 'production' : 'development'} mode on port ${PORT}`);
-  console.log(`API endpoint available at http://localhost:${PORT}/api/analyze?project=LockChain`);
-  if (!isProduction) {
-    console.log('NOTE: Remember to install tokei on your server for production!');
-  }
 });

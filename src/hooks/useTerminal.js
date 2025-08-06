@@ -30,9 +30,8 @@ export const useTerminal = () => {
       try {
         // Always use relative URL for API calls - works in both production and development
         const apiUrl = '/api/analyze?project=' + projectId;
-          
-        console.log(`Analyzing ${projectId} project using API endpoint: ${apiUrl}`);
-        const res = await fetch(apiUrl);        if (!res.ok) {
+        const res = await fetch(apiUrl);        
+        if (!res.ok) {
           throw new Error(`API responded with status: ${res.status}`);
         }
         
