@@ -1,0 +1,28 @@
+{
+  "short_name": "Greg Simon",
+  "name": "Greg Simon | Full-Stack Developer",
+  "icons": [
+    {
+      "src": "icons/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icons/logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "id": "/?source=pwa",
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#000000",
+  "description": "Portfolio website of Greg Simon, Full-Stack Developer showcasing projects like LockChain, AiQArt, and SolMate."
+}
