@@ -13,6 +13,7 @@ import { optimizeForMobile, isRunningAsPWA, isMobileDevice } from './utils/mobil
 function AppContent() {
   const [expandedProject, setExpandedProject] = useState(null);
   const [isPortrait, setIsPortrait] = useState(false);
+  const [videoLoading, setVideoLoading] = useState(true);
   const typedText = useTypewriter('Full-Stack Developer', 800);
   const hasLoggedEasterEgg = useRef(false);
   const { darkMode } = useContext(ThemeContext);
@@ -29,6 +30,14 @@ function AppContent() {
         }
       }, 100);
     }
+  };
+
+  const handleVideoLoad = () => {
+    setVideoLoading(false);
+  };
+
+  const handleVideoLoadStart = () => {
+    setVideoLoading(true);
   };
   
   // Check orientation and update when it changes
@@ -66,6 +75,11 @@ function AppContent() {
     };
   }, []);
 
+  // Reset video loading when theme changes (since video source changes)
+  useEffect(() => {
+    setVideoLoading(true);
+  }, [darkMode]);
+
   return (
     <div className="App">
       <Header />
@@ -82,6 +96,11 @@ function AppContent() {
           </div>
 
           <div className="video-wrapper">
+            {videoLoading && (
+              <div className="video-loader">
+                <div className={`spinner ${darkMode ? 'spinner-light' : 'spinner-dark'}`}></div>
+              </div>
+            )}
             <video
               className="intro-video"
               src={darkMode ? images.videos.devsiteBlack : images.videos.devsiteWhite}
@@ -90,6 +109,9 @@ function AppContent() {
               muted
               playsInline
               preload="auto"
+              onLoadStart={handleVideoLoadStart}
+              onCanPlay={handleVideoLoad}
+              style={{ opacity: videoLoading ? 0 : 1 }}
             />
           </div>
 
