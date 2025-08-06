@@ -1,4 +1,4 @@
-# Greg Simon's Developer Portfolio
+# My Public Developer Portfolio Dev Site
 
 A simple dev site to showcase your projects with easy server-side API calls to analyze your project files. This modern, responsive portfolio website includes a backend component that connects to locally hosted repositories through API calls, allowing for real-time code analysis and statistics.
 
@@ -131,7 +131,7 @@ This application is designed to work with local repositories stored on the same 
    - In a production setup with authentication, frontend requests would include this header using     environment variables and server-side handling to avoid exposing the API key in the browser.
    - Requests without valid API key will receive a 401 Unauthorized response
 
-# ⚠️ Note: While API key auth is recommended in most deployments, I’ve omitted it here intentionally for public demo purposes, as the /api/analyze response does not contain any private or sensitive information. 
+   ⚠️ *Note: While API key auth is recommended in most deployments, I’ve omitted it here intentionally for public demo purposes, as the /api/analyze response does not contain any private or sensitive information.*
 
 5. **API Endpoints**: Your frontend requests stats from Express through /api/ routes that are proxied by Nginx.
 
